@@ -23,7 +23,11 @@ exports.index = async (req, res) => {
   const data = await prisma.post.findMany({
     where: posts,
   });
-  return res.json(data);
+  try {
+    return res.json(data);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // get single post from slug

@@ -8,11 +8,11 @@ exports.index = async (req, res) => {
   return res.json(data);
 };
 
-// get single post from id
+// get single post from slug
 exports.show = async (req, res) => {
   const data = await prisma.post.findUnique({
     where: {
-      id: Number(req.params.id),
+      slug: req.params.slug,
     },
   });
   return res.json(data);
